@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<title>Dharmesh Fast Food</title>
+<style>
+body{
+    font-family:Arial;
+    text-align:center;
+    background:#fff3e0;
+    margin:0;
+    padding:0;
+}
+h1{
+    background:#ff9800;
+    color:white;
+    padding:15px;
+    margin:0;
+}
+.menu{
+    font-size:22px;
+    margin-top:20px;
+}
+img{
+    width:250px;
+    margin-top:15px;
+    border-radius:10px;
+}
+.btn{
+    display:block;
+    width:200px;
+    margin:15px auto;
+    padding:12px;
+    background:#ff5722;
+    color:white;
+    text-decoration:none;
+    border-radius:10px;
+    font-size:20px;
+}
+canvas{
+    background:#ffe0b2;
+    margin-top:30px;
+    border-radius:10px;
+}
+</style>
+</head>
+<body>
+
+<h1>Dharmesh Fast Food</h1>
+
+<div class="menu">
+<b>MENU</b><br><br>
+CHAUMIN ₹40<br>
+ANDA CHAUMIN ₹60<br>
+ANDA ROLL ₹40<br>
+VEG ROLL ₹30<br>
+VEG CHILLI ₹60<br>
+CHICKEN CHILLI ₹80<br>
+</div>
+
+<img src="https://via.placeholder.com/250x150.png?text=Fast+Food" />
+
+<a class="btn" href="tel:9523065511">📞 Call Now</a>
+<a class="btn" href="https://wa.me/9523065511">💬 WhatsApp</a>
+
+<h2>उछलती गेंद 🎾</h2>
+<canvas id="cv" width="320" height="300"></canvas>
+
+<script>
+const cv=document.getElementById("cv");
+const cx=cv.getContext("2d");
+let ball={x:160,y:50,r:15,vy:2};
+let gravity=0.4;
+
+function loop(){
+    cx.clearRect(0,0,320,300);
+    ball.vy+=gravity;
+    ball.y+=ball.vy;
+
+    if(ball.y+ball.r>300){
+        ball.y=300-ball.r;
+        ball.vy=-ball.vy*0.8;
+    }
+
+    cx.beginPath();
+    cx.fillStyle="brown";
+    cx.arc(ball.x,ball.y,ball.r,0,Math.PI*2);
+    cx.fill();
+
+    requestAnimationFrame(loop);
+}
+loop();
+</script>
+
+</body>
+</html>
